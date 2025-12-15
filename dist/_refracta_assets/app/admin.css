@@ -1,0 +1,566 @@
+/* Layout and Elements */
+
+html,
+body {
+    background-color: var(--bg-admin);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+}
+
+@media(max-width: 800px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.card {
+    background: var(--card);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-top: 0;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+h2 svg {
+    margin-right: 1rem;
+    width: 2rem;
+    height: auto;
+    display: inline-block;
+}
+
+h3 {
+    display: block;
+    margin: 2rem 0 1rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+hr {
+    margin: 3rem 0;
+    border: 0;
+    border-top: 2px dashed var(--faded);
+}
+
+/* Form Elements */
+
+.form-wrapper {
+    background: var(--card);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border: 2px dashed var(--border);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text);
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    color: var(--text);
+    background-color: #FFFFFF;
+    transition: border-color 0.3s ease;
+}
+
+.theme-dark input,
+.theme-dark select {
+    background-color: #00000015;
+    color-scheme: dark;
+}
+
+input:hover,
+select:hover {
+    border-color: var(--text);
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+::placeholder {
+    color: var(--faded);
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image:
+        linear-gradient(45deg, transparent 50%, var(--text) 50%),
+        linear-gradient(135deg, var(--text) 50%, transparent 50%);
+    background-position:
+        calc(100% - 20px) calc(1em + 2px),
+        calc(100% - 15px) calc(1em + 2px);
+    background-size:
+        5px 5px,
+        5px 5px;
+    background-repeat: no-repeat;
+    padding-right: 2.3rem;
+}
+
+select:focus {
+    background-image:
+        linear-gradient(45deg, var(--primary) 50%, transparent 50%),
+        linear-gradient(135deg, transparent 50%, var(--primary) 50%);
+    background-position:
+        calc(100% - 15px) 1em,
+        calc(100% - 20px) 1em;
+    background-size:
+        5px 5px,
+        5px 5px;
+    background-repeat: no-repeat;
+    outline: 0;
+}
+
+/* Buttons */
+
+button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+@media (hover: hover) {
+    button:hover {
+        opacity: 0.8;
+    }
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    margin-top: 0.6rem;
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+}
+
+.btn-alter {
+    background: var(--text);
+    color: var(--bg);
+}
+
+/* List Items */
+
+.list-item {
+    position: relative;
+    border: 1px dashed var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--card);
+    gap: 0.7rem;
+}
+
+.list-item>div {
+    flex: 1;
+}
+
+.list-item button {
+    width: auto;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin: 0;
+}
+
+.item-title {
+    font-weight: bold;
+    color: var(--text);
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item-title svg {
+    width: 1.4rem;
+    height: auto;
+    margin-right: 1rem;
+    display: inline-block;
+}
+
+.item-desc {
+    color: var(--muted);
+    margin-left: 2.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.item-count {
+    position: absolute;
+    width: 3.2rem;
+    top: 2rem;
+    left: 0;
+    z-index: 1;
+    font-weight: 700;
+    letter-spacing: -0.05rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.no-items {
+    color: var(--faded);
+}
+
+/* Tags */
+
+.tags-wrapper {
+    margin-bottom: 0.5rem;
+    padding: 0 0.7rem;
+    border: 1px dashed var(--border);
+    border-radius: 6px;
+    min-height: 42px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.theme-dark .tags-wrapper {
+    background: #00000015;
+}
+
+.tag-delete {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.tags-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.6rem;
+    margin-left: 2.2rem;
+}
+
+.tag {
+    background: #00000013;
+    color: var(--primary);
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.theme-dark .tag {
+    background: #00000055;
+}
+
+.tag-input-container {
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    background: #fff;
+}
+
+.tag-input-container:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.tag-input-container input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 0.25rem;
+    min-width: 100px;
+    box-shadow: none;
+}
+
+.tag-chip {
+    background: var(--primary);
+    color: white;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.tag-chip span {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* First Time Setup Screen */
+
+strong.dashed {
+    display: inline-block;
+    border: 2px dashed var(--border);
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+/* Images */
+
+#admin_images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.admin-image-item-wrapper {
+    position: relative;
+    flex: 0 0 calc(25% - 0.375rem);
+    height: 6rem;
+    cursor: pointer;
+}
+
+.admin-image-item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #00000017;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.admin-image-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+}
+
+.admin-image-item img:hover {
+    transform: scale(1.1);
+}
+
+/* Add Element */
+
+.admin-image-item-add-element {
+    position: absolute;
+    top: 50%;
+    right: calc(-1rem - 0.25rem);
+    transform: translate(0, -50%) scale(1);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 3rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.admin-image-item-add-element:hover {
+    transform: translate(0, -50%) scale(1.2);
+}
+
+/* Delete element */
+
+.admin-image-item-delete-element {
+    position: absolute;
+    top: 0.1rem;
+    left: 0.1rem;
+    transform: scale(1);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 3rem;
+    font-weight: bold;
+    font-size: 1.3rem;
+    line-height: 1;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--danger);
+    color: var(--text);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    display: flex;
+}
+
+@media (hover:hover) {
+    .admin-image-item-delete-element {
+        display: none;
+    }
+
+    .admin-image-item-wrapper:hover .admin-image-item-delete-element,
+    .admin-text-item-wrapper:hover .admin-image-item-delete-element {
+        display: flex;
+    }
+
+    .admin-image-item-delete-element:hover {
+        transform: scale(1.2);
+    }
+}
+
+/* Move elements */
+
+.item-move-next,
+.item-move-prev {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: scale(1);
+    width: 50%;
+    height: 1.5rem;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: opacity 0.2s ease;
+    opacity: 0.7;
+    cursor: pointer;
+    display: flex;
+}
+
+.item-move-prev {
+    left: 0;
+}
+
+.item-move-prev span,
+.item-move-next span {
+    pointer-events: none;
+    user-select: none;
+}
+
+.item-move-prev span {
+    transform: rotate(180deg);
+}
+
+@media (hover:hover) {
+
+    .item-move-next,
+    .item-move-prev {
+        display: none;
+    }
+
+    .admin-image-item-wrapper:hover .item-move-next,
+    .admin-text-item-wrapper:hover .item-move-next,
+    .admin-image-item-wrapper:hover .item-move-prev,
+    .admin-text-item-wrapper:hover .item-move-prev {
+        display: flex;
+    }
+
+    .item-move-next:hover,
+    .item-move-prev:hover {
+        opacity: 1;
+    }
+}
+
+/* Text */
+
+.admin-text-item-wrapper {
+    position: relative;
+    flex: 0 0 100%;
+    margin: 0.5rem 0;
+}
+
+.admin-text-item-wrapper h2,
+.admin-text-item-wrapper p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.1;
+}
+
+.admin-text-item-wrapper .item-move-next,
+.admin-text-item-wrapper .item-move-prev {
+    width: 4rem;
+    bottom: 0;
+}
+
+.admin-text-item-wrapper .item-move-prev {
+    left: 50%;
+    transform: translateX(-100%);
+}
+
+.admin-text-item-wrapper .item-move-next {
+    left: 50%;
+}
+
+/* Input */
+
+.admin-input-item-wrapper {
+    position: relative;
+    flex: 0 0 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 0.5rem;
+}
+
+.admin-input-item-wrapper>select {
+    flex: 0 0 auto;
+    width: auto;
+}
+
+.admin-input-item-wrapper>input {
+    flex: 1 1 auto;
+}
+
+/* Play Icon */
+
+.play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.play-icon svg {
+    width: 4vw;
+    height: auto;
+}

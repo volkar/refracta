@@ -1,0 +1,305 @@
+:root.theme-dark {
+    --bg: #121621;
+    --bg-admin: #05070D;
+    --text: #dde6f2;
+    --muted: #909fc4;
+    --faded: #3e4967;
+    --card: #141924;
+    --border: #212737;
+    --primary: #259feb;
+    --danger: #dc5126;
+}
+
+:root.theme-light {
+    --bg: #e9eef7;
+    --bg-admin: #e9eef7;
+    --text: #181a1d;
+    --muted: #7784a2;
+    --faded: #b0b9ce;
+    --card: #f4f7fd;
+    --border: #cad6e0;
+    --primary: #0580cd;
+    --danger: #cf3d10;
+}
+
+html {
+    background: var(--bg);
+    color: var(--text);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    padding: 1vw;
+    margin: 0;
+    font-size: 16px;
+    background: var(--bg);
+    color: var(--text);
+}
+
+a {
+    color: var(--text);
+}
+
+.scaled {
+    font-size: 3vw;
+}
+
+@media (min-width: 768px) {
+    .scaled {
+        font-size: 2vw;
+    }
+}
+
+@media (min-width: 1024px) {
+    .scaled {
+        font-size: 1.5vw;
+    }
+}
+
+/* Gallery */
+
+.gallery {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.gallery .album {
+    position: relative;
+    flex: 0 0 50%;
+    padding: 0.5vw;
+    box-sizing: border-box;
+    margin-bottom: 2em;
+    scroll-margin-top: 1rem;
+}
+
+@media (min-width: 768px) {
+    .gallery .album {
+        flex: 0 0 33.33%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .gallery .album {
+        flex: 0 0 25%;
+    }
+}
+
+.gallery .album-cover {
+    position: relative;
+    aspect-ratio: 16/9;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5em;
+    background-color: #00000017;
+}
+
+.gallery .album img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 300ms ease;
+}
+
+@media (hover:hover) {
+    .gallery .album img:hover {
+        transform: scale(1.1);
+    }
+}
+
+.gallery .album-year {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    font-size: 2.2em;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+    line-height: 0.8;
+    display: block;
+    color: #fff;
+    text-shadow: 0 0 0.25em #00000088;
+}
+
+.gallery .album a {
+    text-decoration: none;
+}
+
+.gallery .album h1 {
+    text-decoration: none;
+    font-size: 1em;
+    line-height: 1.1;
+    margin: 0 0 0.3em;
+}
+
+.gallery .album h3 {
+    text-decoration: none;
+    font-size: 0.65em;
+    font-weight: 400;
+    margin: 0 0 0.8em;
+    color: var(--muted);
+}
+
+/* Album */
+
+.album-title h1 {
+    letter-spacing: -0.03em;
+    font-size: 2em;
+    margin: 0.4em auto 0.4em;
+    text-align: center;
+    line-height: 1.1;
+    padding: 0 0.5em;
+    font-weight: 700;
+    max-width: 60rem;
+}
+
+.album-title h2 {
+    letter-spacing: -0.03em;
+    font-size: 1.3em;
+    margin: 0.4em auto 0.6em;
+    text-align: center;
+    line-height: 1.1;
+    font-weight: 300;
+    max-width: 60rem;
+}
+
+.album-title h3 {
+    letter-spacing: -0.03em;
+    font-size: 0.9em;
+    margin: 0.6em 0 0.8em;
+    text-align: center;
+    line-height: 1.1;
+    font-weight: 300;
+    color: var(--muted);
+}
+
+#lumosaic {
+    position: relative;
+    max-width: 100%;
+}
+
+#lumosaic img {
+    cursor: pointer;
+}
+
+.lumosaic-item {
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+/* Back button */
+
+.back {
+    text-align: center;
+}
+
+.back button.back {
+    border: 0;
+    border-radius: 3em;
+    width: auto;
+    display: inline-flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    padding: 0.4em 0.7em;
+    cursor: pointer;
+    font-size: 0.7em;
+    margin-top: 0.5em;
+    background: var(--text);
+    color: var(--bg);
+}
+
+.back button svg {
+    width: 0.8em;
+    height: auto;
+    margin-right: 0.3em;
+}
+
+/* Gallery Timeline */
+
+#timeline {
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 4rem;
+    background: linear-gradient(to left, var(--bg) 40%, transparent);
+    z-index: 100;
+    overflow-y: auto;
+    pointer-events: none;
+}
+
+.timeline-wrapper {
+    white-space: nowrap;
+    transform: rotate(90deg);
+    transform-origin: left bottom;
+    padding: 0;
+    text-align: center;
+    min-width: calc(100vh - 1.5rem);
+    pointer-events: all;
+}
+
+.timeline-year {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+    position: relative;
+    top: -1.6em;
+}
+
+.timeline-year a {
+    padding: 0.2em 1rem;
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.timeline-year:not(.active) a:hover {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.timeline-year.active a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+/* Title and text */
+
+.album-inline-title {
+    text-align: center;
+}
+
+.album-inline-title h2 {
+    font-size: 1.3em;
+    margin: 0.7rem auto;
+    text-align: center;
+    line-height: 1.1;
+    font-weight: 300;
+    max-width: 40rem;
+}
+
+.album-inline-text {
+    text-align: center;
+}
+
+.album-inline-text p {
+    font-size: 0.8em;
+    margin: 0.7em auto;
+    text-align: center;
+    line-height: 1.1;
+    font-weight: 300;
+    max-width: 40rem;
+    color: var(--muted);
+}
+
+.album-inline-gallery {
+    margin: 1.5rem auto;
+}
