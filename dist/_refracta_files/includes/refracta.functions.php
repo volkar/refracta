@@ -118,6 +118,7 @@ function saveDataFile()
 // Loads album data from given directory slug
 function loadAlbumData($albumSlug) {
     // Get album data
+    $albumSlug = trim(basename($albumSlug));
     $subDirs = array_filter(glob(ROOT_DIR . '/' . $albumSlug . '/*'), function ($f) {
         return is_dir($f);
     });
@@ -529,7 +530,6 @@ function createPreview($sourceFile, $destFile, $maxWH, $quality)
 // Resizes an image using Imagick, preserving the aspect ratio, based on the longest side.
 function createPreviewImagick($sourceFile, $destFile, $maxWH, $quality)
 {
-    global $options;
     try {
         $imagick = new Imagick($sourceFile);
 
@@ -558,7 +558,6 @@ function createPreviewImagick($sourceFile, $destFile, $maxWH, $quality)
 // Resizes an image using GD, preserving the aspect ratio, based on the longest side.
 function createPreviewGD($sourceFile, $destFile, $maxWH, $quality)
 {
-    global $options;
     // Get image information
     $imageInfo = getimagesize($sourceFile);
     if (!$imageInfo) {

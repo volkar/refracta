@@ -1,6 +1,6 @@
 <?php
 /*
- * Refracta 1.0.0
+ * Refracta 1.0.1
  * Refracta's Gallery script.
  * Searches all subdirectories and compiles a list of allowed albums.
  *

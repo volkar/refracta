@@ -1,6 +1,6 @@
 <?php
 /*
- * Refracta 1.0.0
+ * Refracta 1.0.1
  * Refracta's Admin Panel script.
  *
  * https://refracta.syntheticsymbiosis.com
@@ -154,9 +154,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['action'])) {
             case 'create_album':
                 $title = $_POST['title'] ?? '';
                 $subtitle = $_POST['subtitle'] ?? '';
-                $slug = basename($_POST['slug'] ?? '');
+                $slug = trim(basename($_POST['slug'] ?? ''));
                 $date = $_POST['date'] ?? '';
-                $imgDir = basename($_POST['img_dir'] ?? '');
+                $imgDir = trim(basename($_POST['img_dir'] ?? ''));
                 $theme = $_POST['theme'] ?? 'dark';
                 $allowedGroups = $_POST['allowed_groups'] ?? [];
 
@@ -209,7 +209,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['action'])) {
                 if (strlen($theme) === 0) throw new Exception('Theme is required.');
                 if (!is_array($allowedGroups)) throw new Exception('Allowed groups are required.');
 
-                $slug = basename(trim($_POST['album']));
+                $slug = trim(basename($_POST['album']));
                 $album = loadAlbumData($slug);
                 if (!$album) throw new Exception("Album not found.");
 
@@ -247,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['action'])) {
             // --- Delete Album ---
             case 'delete_album':
                 $album = $_POST['album'] ?? '';
-                $album = basename(trim($album));
+                $album = trim(basename($album));
 
                 if (strlen($album) === 0 || $album[0] === '.') throw new Exception('Album is required.');
                 if ($album === basename(ASSET_DIR) || $album === basename(REFRACTA_DIR)) throw new Exception('Album is required.');
@@ -432,11 +432,12 @@ if (empty($_GET['album'])) {
 <?php
 } else {
     // Album page
-    $albumUrl = $_GET["album"];
+    $albumUrl = trim(basename($_GET["album"]));
     $album = loadAlbumData($albumUrl);
     if (!$album) {
-        header("HTTP/1.0 404 Not Found");
-        die();
+        echo "<h1>Album not found</h1>";
+        echo getFooter('admin');
+        exit;
     }
     ?>
 <script>

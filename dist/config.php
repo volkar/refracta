@@ -35,4 +35,4 @@ $refractaUrl = $prefix . $_SERVER['HTTP_HOST'] . $suffix;
 
 define('REFRACTA_URL', "{$refractaUrl}");
 define('ASSET_URL', $refractaUrl . "/" . basename(ASSET_DIR));
-define('ASSET_CACHE', rand());
+define('ASSET_CACHE', '1.0.1');

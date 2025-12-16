@@ -1,6 +1,6 @@
 <?php
 /*
- * Refracta 1.0.0
+ * Refracta 1.0.1
  * Refracta's album script.
  * Loads refracta.json and renders the album with lightbox functionality
  *
